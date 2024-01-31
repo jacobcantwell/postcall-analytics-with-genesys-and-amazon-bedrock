@@ -48,12 +48,12 @@ An AWS Lambda function is used to trigger the processing of Genesys call records
   "Version": "2012-10-17",
   "Statement": [
     {
-      “Sid”: “BedrockConsole”,
-      “Effect”: “Allow”,
-      “Action”: [
-        “bedrock:*”
+      "Sid": "BedrockConsole",
+      "Effect": "Allow",
+      "Action": [
+        "bedrock:*"
       ],
-      “Resource”: “*”
+      "Resource": "*"
     }
   ]
 }
