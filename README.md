@@ -206,12 +206,3 @@ The aggregated output includes useful fields from the original metadata Genesys 
 * [Prompt Engineering Guide](https://www.promptingguide.ai/)
 * [AWS re:Invent 2023 - Prompt engineering best practices for LLMs on Amazon Bedrock (AIM377)](https://www.youtube.com/watch?v=jlqgGkh1wzY)
 
-
-
-
-
-
-```
-
-
-
