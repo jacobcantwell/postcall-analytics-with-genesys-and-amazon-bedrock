@@ -4,6 +4,7 @@
 
 * Create an Amazon S3 bucket for storing the Genesys conversations - a Genesys Trigger Load Call Records lambda function will read from this bucket
 * Create an Amazon S3 bucket for storing output from Amazon Bedrock - a Genesys Load Call Records lambda function will write to this bucket - e.g. genesys-call-record-output - this will later be crawled with AWS Glue and used to show in a dashboard
+* Create an Amazon SQS queue used for coordinating the processing of Genesys call centre records
 
 
 
@@ -77,8 +78,6 @@ In AWS Lambda, LHS menu -> Layers -> Create layer -> Name like Boto3Layer -> Sel
 
 
 
-
-
 ## AWS Lambda - Genesys Load Call Records
 
 The input from this function is an Amazon SQS queue event containing a list of Amazon S3 buckets and object keys referencing the .opus_metadata.json suffixed JSON file. The .opus_metadata.json is always returned by Genesys for a conversation and includes reference ids to the related files, some of which are optional depending on if a transcript was included or not.
@@ -90,5 +89,54 @@ This Lambda function aggregates the related Genesys call transcript and metadata
   "records_processed": 10
 }
 ```
+
+Records are saved into Amazon S3 bucket under a folder structure that it optimised for partitioning with AWS Glue and analytics querying such as with Amazon Athena. A .summary.json file is created for every conversation.
+
+```
+s3://genesys-call-record-output/summary/year=2023/month=08/day=29/recording-01e7279e-a65b-40d3-b807-ef6f3c0b2c0a.summary.json
+```
+
+
+## Amazon SQS Queue
+
+Create a standard Amazon SQS queue that triggers the Genesys Load Call Records AWS Lambda
+
+* Name: genesys-metadata-queue
+* Type: standard
+* Encryption: Amazon SQS key (SSE-SQS)
+* Configure Lambda function trigger - choose the ARN of the Genesys Load Call Records AWS Lambda, e.g. arn:aws:lambda:ap-southeast-2:aws-accountid:function:genesys-load-call-records
+
+
+## Example Summary Output
+
+The aggregated output includes useful fields from the original metadata Genesys files and fields created from the Amazon Bedrock LLM response.
+
+{
+  "s3_bucket_name": "genesys-call-inputs-190067120391",
+  "s3_object_key_opus_metadata": "originalAudio/conversation_idea4303d8-014e-44f9-b770-5b15e6f86f1f/0261adc0-0618-4652-ac76-de176e1c431c.opus_metadata.json",
+  "conversation_id": "ea4303d8-014e-44f9-b770-5b15e6f86f1f",
+  "recording_id": "0261adc0-0618-4652-ac76-de176e1c431c",
+  "start_time": "2023-08-29T23:19:04.873+0000",
+  "end_time": "2023-08-29T23:19:30.493+0000",
+  "duration_ms": 25620,
+  "initial_direction": "outbound",
+  "s3_object_key_opus_recording": "originalAudio/conversation_idea4303d8-014e-44f9-b770-5b15e6f86f1f/0261adc0-0618-4652-ac76-de176e1c431c.opus",
+  "s3_object_key_transcript": "originalAudio/conversation_idea4303d8-014e-44f9-b770-5b15e6f86f1f/ea4303d8-014e-44f9-b770-5b15e6f86f1f-053fd4c8-85b7-473f-acbf-91cd183fefea.transcript.json",
+  "s3_object_key_opus_call_metadata": "originalAudio/conversation_idea4303d8-014e-44f9-b770-5b15e6f86f1f/ea4303d8-014e-44f9-b770-5b15e6f86f1f.opus_call_metadata.json",
+  "is_opus_recording_available": true,
+  "is_opus_call_metadata_available": true,
+  "is_transcript_available": true,
+  "communication_id": "053fd4c8-85b7-473f-acbf-91cd183fefea",
+  "media_type": "call",
+  "transcript": "Hi, you. Please leave a message after a tone and I'll get back to you soon as I can thank you. Hi there. It is regarding your request activation and, uh, schedule a technician appointment. Please get in touch with the us. Thank you have a nice day.",
+  "llm_intent": " Customer intent was to schedule a technician appointment for fibre installation.",
+  "llm_summary": " This was a voicemail message from a telecommunications company regarding scheduling a technician appointment to activate a requested fibre internet service. The caller asked the recipient to contact the company's team to arrange the appointment.",
+  "llm_sentiment": " positive",
+  "llm_is_tocancel": " No",
+  "llm_is_newservice": " No",
+  "llm_is_discountoffered": " No"
+}
+
+
 
 
