@@ -14,7 +14,7 @@
 
 In this project we are using the Python Boto3 library to call the Claude Instant v1 LLM hosted in Amazon Bedrock.
 
-```python
+```python3
 def invoke_amazon_bedrock(prompt):
     body = json.dumps({
         "prompt": prompt,
@@ -43,7 +43,7 @@ def invoke_amazon_bedrock(prompt):
 
 We define a list of prompts that we will send to the LLM to get insights out of the call transcript. This list can be refined over time as we define the insights that are most useful.
 
-```json
+```python3
 prompts = [
     { "key":"llm_intent", "value":"""Human: What was the customer intent for the call. Do not say anything else. Do not include any personal information. <br><transcript><br>{transcript}<br></transcript><br>Assistant:""" },
     { "key":"llm_summary", "value":"""Human: Summarise the call transcript. Do not include any personal information, only reply with the summary. <br><transcript><br>{transcript}<br></transcript><br>Assistant:""" },
