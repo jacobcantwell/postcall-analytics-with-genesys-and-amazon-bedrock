@@ -5,7 +5,54 @@
 * Create an Amazon S3 bucket for storing the Genesys conversations - a Genesys Trigger Load Call Records lambda function will read from this bucket
 * Create an Amazon S3 bucket for storing output from Amazon Bedrock - a Genesys Load Call Records lambda function will write to this bucket - e.g. genesys-call-record-output - this will later be crawled with AWS Glue and used to show in a dashboard
 * Create an Amazon SQS queue used for coordinating the processing of Genesys call centre records
+* Setup Amazon Bedrock access
 
+
+## Amazon Bedrock
+
+### Using Boto3 to call Amazon Bedrock
+
+In this project we are using the Python Boto3 library to call the Claude Instant v1 LLM hosted in Amazon Bedrock.
+
+```python
+def invoke_amazon_bedrock(prompt):
+    body = json.dumps({
+        "prompt": prompt,
+        "max_tokens_to_sample": 4096,
+        "temperature": 0,
+        "top_p": 1,
+        "stop_sequences": [
+          "\n\nHuman:"
+        ],
+        "anthropic_version": "bedrock-2023-05-31"
+    })
+    modelId = "anthropic.claude-instant-v1"
+    accept = "application/json"
+    contentType = "application/json"
+    try:
+        bedrock_response = bedrock_runtime.invoke_model(
+            body=body, modelId=modelId, accept=accept, contentType=contentType
+        )
+        response_body = json.loads(bedrock_response.get("body").read())
+        response_completion = response_body.get("completion")
+        print(f"bedrock_response_completion: {response_completion}")
+        return response_completion
+```
+
+## Define LLM Prompts
+
+We define a list of prompts that we will send to the LLM to get insights out of the call transcript. This list can be refined over time as we define the insights that are most useful.
+
+```json
+prompts = [
+    { "key":"llm_intent", "value":"""Human: What was the customer intent for the call. Do not say anything else. Do not include any personal information. <br><transcript><br>{transcript}<br></transcript><br>Assistant:""" },
+    { "key":"llm_summary", "value":"""Human: Summarise the call transcript. Do not include any personal information, only reply with the summary. <br><transcript><br>{transcript}<br></transcript><br>Assistant:""" },
+    { "key":"llm_sentiment", "value":"""Human: what is the customer sentiment at the end of the call, only reply with 'postive', 'negative' or 'neutral'? Do not say anything else.<br><transcript><br>{transcript}<br></transcript><br>Assistant:""" },
+    { "key":"llm_is_tocancel", "value":"""Human: Did the customer call to cancel an existing service? reply with "yes", "No". Do not say anything else.<br><transcript><br>{transcript}<br></transcript><br>Assistant:""" },
+    { "key":"llm_is_newservice", "value":"""Human: Did the customer call to sign up to a new service? reply with "yes", "No". Do not say anything else.<br><transcript><br>{transcript}<br></transcript><br>Assistant:""" },
+    { "key":"llm_is_discountoffered", "value":"""Human: Did the agent offer the customer a monthly recurring discount? reply with "yes", "No". Do not say anything else.<br><transcript><br>{transcript}<br></transcript><br>Assistant:""" },
+]
+```
 
 
 ## Genesys Trigger Load Call Records
