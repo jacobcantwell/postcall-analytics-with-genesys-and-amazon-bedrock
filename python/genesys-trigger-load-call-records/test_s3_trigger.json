@@ -1,0 +1,4 @@
+{
+  "input_s3_bucket_name": "genesys-call-inputs-aws-accountid",
+  "input_s3_object_key_prefix": "originalAudio/"
+}
