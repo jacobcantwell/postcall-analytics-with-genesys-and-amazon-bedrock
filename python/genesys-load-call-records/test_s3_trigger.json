@@ -1,0 +1,74 @@
+{
+  "Records": [
+    {
+      "messageId": "6831acfa-0342-49a0-bfc4-7a6960bce2ca",
+      "body": "{\"s3_bucket_name\": \"genesys-call-inputs-aws-account-id\", \"s3_object_key\": \"originalAudio/conversation_ide8b44185-ea4b-4e0d-aec3-f0f8eeecd7c0/7758faf4-8e8d-47e1-abbc-41662b153c78.opus_metadata.json\"}",
+      "eventSource": "aws:sqs",
+      "eventSourceARN": "arn:aws:sqs:ap-southeast-2:aws-account-id:genesys-metadata-queue",
+      "awsRegion": "ap-southeast-2"
+    },
+    {
+      "messageId": "2c8dfa0d-af0f-4860-b869-676979451bca",
+      "body": "{\"s3_bucket_name\": \"genesys-call-inputs-aws-account-id\", \"s3_object_key\": \"originalAudio/conversation_ide8afa5fa-54c9-4fc9-b99e-611ea71acb9c/06698dfe-f866-4d7b-8f78-9e00d2066432.opus_metadata.json\"}",
+      "eventSource": "aws:sqs",
+      "eventSourceARN": "arn:aws:sqs:ap-southeast-2:aws-account-id:genesys-metadata-queue",
+      "awsRegion": "ap-southeast-2"
+    },
+    {
+      "messageId": "7f66e43a-b77e-424f-a3be-7b7360434e7d",
+      "body": "{\"s3_bucket_name\": \"genesys-call-inputs-aws-account-id\", \"s3_object_key\": \"originalAudio/conversation_iddd829c36-dac5-4f60-8fe5-8df53dd89e33/9ba1fc52-a316-404f-aeaa-aeb70869f66f.opus_metadata.json\"}",
+      "eventSource": "aws:sqs",
+      "eventSourceARN": "arn:aws:sqs:ap-southeast-2:aws-account-id:genesys-metadata-queue",
+      "awsRegion": "ap-southeast-2"
+    },
+    {
+      "messageId": "bfe06f7e-dd41-4524-ba03-b79f882b0771",
+      "body": "{\"s3_bucket_name\": \"genesys-call-inputs-aws-account-id\", \"s3_object_key\": \"originalAudio/conversation_ided86a335-b376-43ee-abc7-96dd11ad65e1/6fc7a7f1-7096-49c2-9648-2251280a42eb.opus_metadata.json\"}",
+      "eventSource": "aws:sqs",
+      "eventSourceARN": "arn:aws:sqs:ap-southeast-2:aws-account-id:genesys-metadata-queue",
+      "awsRegion": "ap-southeast-2"
+    },
+    {
+      "messageId": "232c8176-0c0e-4a1e-b6fa-632c4d45ee6e",
+      "body": "{\"s3_bucket_name\": \"genesys-call-inputs-aws-account-id\", \"s3_object_key\": \"originalAudio/conversation_idf140ac94-6ac3-44d1-b23d-75aeadb448e7/b25201ce-d1d9-4931-b9ab-95a9a43a4929.opus_metadata.json\"}",
+      "eventSource": "aws:sqs",
+      "eventSourceARN": "arn:aws:sqs:ap-southeast-2:aws-account-id:genesys-metadata-queue",
+      "awsRegion": "ap-southeast-2"
+    },
+    {
+      "messageId": "5be2dd06-0ebb-4676-a5b3-506b362f849d",
+      "body": "{\"s3_bucket_name\": \"genesys-call-inputs-aws-account-id\", \"s3_object_key\": \"originalAudio/conversation_iddf7c5176-269c-4d23-98e7-1396f8de454f/6c650028-11e5-4624-b876-03bba0427e60.opus_metadata.json\"}",
+      "eventSource": "aws:sqs",
+      "eventSourceARN": "arn:aws:sqs:ap-southeast-2:aws-account-id:genesys-metadata-queue",
+      "awsRegion": "ap-southeast-2"
+    },
+    {
+      "messageId": "18316569-44e9-4d44-bbe7-c1d30f6a47fc",
+      "body": "{\"s3_bucket_name\": \"genesys-call-inputs-aws-account-id\", \"s3_object_key\": \"originalAudio/conversation_ideadcf31b-7976-405a-9d2c-041ded1c4255/f16b57dc-5a0a-45bb-af5b-2a6802360851.opus_metadata.json\"}",
+      "eventSource": "aws:sqs",
+      "eventSourceARN": "arn:aws:sqs:ap-southeast-2:aws-account-id:genesys-metadata-queue",
+      "awsRegion": "ap-southeast-2"
+    },
+    {
+      "messageId": "68765294-dec7-49ec-a9e1-6e77f0a09ffe",
+      "body": "{\"s3_bucket_name\": \"genesys-call-inputs-aws-account-id\", \"s3_object_key\": \"originalAudio/conversation_idef196bd6-c7cb-453a-98db-2b17fb189364/9045e8ec-ad5f-4fbd-a892-0ea682a70db4.opus_metadata.json\"}",
+      "eventSource": "aws:sqs",
+      "eventSourceARN": "arn:aws:sqs:ap-southeast-2:aws-account-id:genesys-metadata-queue",
+      "awsRegion": "ap-southeast-2"
+    },
+    {
+      "messageId": "22f590aa-aaf2-4385-8072-aacd0f00d482",
+      "body": "{\"s3_bucket_name\": \"genesys-call-inputs-aws-account-id\", \"s3_object_key\": \"originalAudio/conversation_idf020a884-0347-4a6a-9c44-d87332398fd5/01e7279e-a65b-40d3-b807-ef6f3c0b2c0a.opus_metadata.json\"}",
+      "eventSource": "aws:sqs",
+      "eventSourceARN": "arn:aws:sqs:ap-southeast-2:aws-account-id:genesys-metadata-queue",
+      "awsRegion": "ap-southeast-2"
+    },
+    {
+      "messageId": "4887214a-526b-4128-9dd9-a99159d90d01",
+      "body": "{\"s3_bucket_name\": \"genesys-call-inputs-aws-account-id\", \"s3_object_key\": \"originalAudio/conversation_idf2dcf91f-8288-4867-9e70-60a28c0c8809/e2787f4d-067f-4e53-b350-a82fc5916daa.opus_metadata.json\"}",
+      "eventSource": "aws:sqs",
+      "eventSourceARN": "arn:aws:sqs:ap-southeast-2:aws-account-id:genesys-metadata-queue",
+      "awsRegion": "ap-southeast-2"
+    }
+  ]
+}
