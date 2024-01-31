@@ -21,11 +21,12 @@ An AWS Lambda function is used to trigger the processing of Genesys call records
 
 ### AWS Lambda - Trigger Test JSON
 
+```json
 {
   "input_s3_bucket_name": "genesys-call-inputs-aws-accountid",
   "input_s3_object_key_prefix": "originalAudio/"
 }
-
+```
 
 
 
@@ -44,8 +45,8 @@ An AWS Lambda function is used to trigger the processing of Genesys call records
 
 ```json
 {
-  “Version”: “2012-10-17",
-  “Statement”: [
+  "Version": "2012-10-17",
+  "Statement": [
     {
       “Sid”: “BedrockConsole”,
       “Effect”: “Allow”,
