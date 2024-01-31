@@ -3,21 +3,6 @@
 This solution shows a simple implementation for getting insights out of your Genesys Contact Centre call transcripts using generative AI.
 
 
-## Introduction to Amazon Bedrock
-
-[Amazon Bedrock](https://aws.amazon.com/bedrock/) is an AWS managed service used to build and scale generative AI applications with foundation models.
-
-### Anthropic's Claude on Amazon Bedrock
-
-[Anthropic's Claude Large Language Model](https://aws.amazon.com/bedrock/claude/) is a state of art model used for sophisticated dialogue, creative content generation, complex reasoning, coding, and detailed instruction. It can edit, rewrite, summarize, classify, extract structured data, do Q&A based on the content, and more.
-
-
-## AWS Resources Required
-
-* Create an Amazon S3 bucket for storing the Genesys conversations - a Genesys Trigger Load Call Records lambda function will read from this bucket
-* Create an Amazon S3 bucket for storing output from Amazon Bedrock - a Genesys Load Call Records lambda function will write to this bucket - e.g. genesys-call-record-output - this will later be crawled with AWS Glue and used to show in a dashboard
-* Create an Amazon SQS queue used for coordinating the processing of Genesys call centre records
-* Setup Amazon Bedrock access
 
 ## Exporting Genesys Call Centre Records to Amazon S3
 
@@ -44,7 +29,21 @@ The folder contains all the recording files that are retained during the convers
 Each recording file has a corresponding JSON metadata file. The JSON metadata file name is suffixed with “_metadata.json”.
 
 
-## Using Amazon Bedrock
+## Setting up AWS Resources
+
+* Create an Amazon S3 bucket for storing the Genesys conversations - a Genesys Trigger Load Call Records lambda function will read from this bucket
+* Create an Amazon S3 bucket for storing output from Amazon Bedrock - a Genesys Load Call Records lambda function will write to this bucket - e.g. genesys-call-record-output - this will later be crawled with AWS Glue and used to show in a dashboard
+* Create an Amazon SQS queue used for coordinating the processing of Genesys call centre records
+* Setup Amazon Bedrock access
+
+
+## Amazon Bedrock
+
+[Amazon Bedrock](https://aws.amazon.com/bedrock/) is an AWS managed service used to build and scale generative AI applications with foundation models.
+
+### Anthropic's Claude on Amazon Bedrock
+
+[Anthropic's Claude Large Language Model](https://aws.amazon.com/bedrock/claude/) is a state of art model used for sophisticated dialogue, creative content generation, complex reasoning, coding, and detailed instruction. It can edit, rewrite, summarize, classify, extract structured data, do Q&A based on the content, and more.
 
 ### Using Boto3 to call Amazon Bedrock
 
