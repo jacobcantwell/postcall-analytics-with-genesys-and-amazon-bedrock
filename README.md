@@ -19,6 +19,30 @@ This solution shows a simple implementation for getting insights out of your Gen
 * Create an Amazon SQS queue used for coordinating the processing of Genesys call centre records
 * Setup Amazon Bedrock access
 
+## Exporting Genesys Call Centre Records to Amazon S3
+
+Genesys supports the automatic exporting of conversations to an Amazon S3 bucket. See the Genesys documenation for [Working with exported recordings in AWS S3 bucket](https://help.mypurecloud.com/articles/working-with-exported-recordings-in-aws-s3-bucket/) and [About the AWS S3 recording bulk actions integration](https://help.mypurecloud.com/articles/about-the-aws-s3-recording-bulk-actions-integration/)
+
+Recording files are exported to the AWS S3 bucket into folders with the following structure:
+
+```
+s3://{bucket}/{organizationId}/year={year}/{month={month}/day={day}/hour={hourOfDay}/conversation_id={conversationId}/ 
+```
+
+| Placeholder | Description |
+| -- | -- |
+| {bucket} | The S3 bucket name. |
+| {organizationId} | The organization ID. |
+| {year} | The year in which the conversation began. |
+| {month} | The month during which the conversation began (in digits). |
+| {day} | The day during which the conversation began. |
+| {hourOfDay} | The hour during which the conversation began. |
+| {conversationId} | The conversation ID. |
+
+The folder contains all the recording files that are retained during the conversation. Each recording file has one recording, and the name of the file is the recording ID.
+
+Each recording file has a corresponding JSON metadata file. The JSON metadata file name is suffixed with “_metadata.json”.
+
 
 ## Using Amazon Bedrock
 
