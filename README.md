@@ -111,6 +111,7 @@ Create a standard Amazon SQS queue that triggers the Genesys Load Call Records A
 
 The aggregated output includes useful fields from the original metadata Genesys files and fields created from the Amazon Bedrock LLM response.
 
+```json
 {
   "s3_bucket_name": "genesys-call-inputs-190067120391",
   "s3_object_key_opus_metadata": "originalAudio/conversation_idea4303d8-014e-44f9-b770-5b15e6f86f1f/0261adc0-0618-4652-ac76-de176e1c431c.opus_metadata.json",
@@ -136,7 +137,7 @@ The aggregated output includes useful fields from the original metadata Genesys 
   "llm_is_newservice": " No",
   "llm_is_discountoffered": " No"
 }
-
+```
 
 
 
