@@ -1,5 +1,17 @@
 # Postcall Analytics with Genesys Contact Centre and Amazon Bedrock
 
+This solution shows a simple implementation for getting insights out of your Genesys Contact Centre call transcripts using generative AI.
+
+
+## Introduction to Amazon Bedrock
+
+[Amazon Bedrock](https://aws.amazon.com/bedrock/) is an AWS managed service used to build and scale generative AI applications with foundation models.
+
+### Anthropic's Claude on Amazon Bedrock
+
+[Anthropic's Claude Large Language Model](https://aws.amazon.com/bedrock/claude/) is a state of art model used for sophisticated dialogue, creative content generation, complex reasoning, coding, and detailed instruction. It can edit, rewrite, summarize, classify, extract structured data, do Q&A based on the content, and more.
+
+
 ## AWS Resources Required
 
 * Create an Amazon S3 bucket for storing the Genesys conversations - a Genesys Trigger Load Call Records lambda function will read from this bucket
@@ -8,7 +20,7 @@
 * Setup Amazon Bedrock access
 
 
-## Amazon Bedrock
+## Using Amazon Bedrock
 
 ### Using Boto3 to call Amazon Bedrock
 
@@ -185,6 +197,19 @@ The aggregated output includes useful fields from the original metadata Genesys 
   "llm_is_newservice": " No",
   "llm_is_discountoffered": " No"
 }
+
+## Supporting Resources
+
+### Prompt Engineering
+
+* [Prompt Engineering Guide](https://www.promptingguide.ai/)
+* [AWS re:Invent 2023 - Prompt engineering best practices for LLMs on Amazon Bedrock (AIM377)](https://www.youtube.com/watch?v=jlqgGkh1wzY)
+
+
+
+
+
+
 ```
 
 
